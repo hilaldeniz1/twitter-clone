@@ -1,0 +1,59 @@
+$blue: #1da1f2;
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 20px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.auth-page {
+  min-height: 100vh;
+  background: rgb(30, 30, 30);
+  display: grid;
+  place-items: center;
+}
+
+.auth-page form {
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+  align-items: center;
+  padding: 40px 80px;
+  border: 1px solid rgb(69, 69, 69);
+  border-radius: 10px;
+  gap: 50px;
+
+  img {
+    width: 80px;
+  }
+
+  div {
+    width: 100%;
+  }
+
+  input {
+    margin-top: 5px;
+  }
+  button {
+    width: 100%;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    &:hover {
+      background: rgb(198, 198, 198);
+    }
+  }
+
+  .warning {
+    width: 100%;
+    background: #f8d7da;
+    padding: 5px 20px;
+    color: black;
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X | Anasayfa</title>
+    <link rel="stylesheet" href="scss/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body class="feed">
+    <aside class="left-bar">
+      <nav>
+        <img src="/images/x-logo.png" />
+        <a>
+          <i class="bi bi-house-fill"></i>
+          <span>Anasayfa</span>
+        </a>
+        <a>
+          <i class="bi bi-search"></i>
+          <span>Keşfet</span>
+        </a>
+        <a>
+          <i class="bi bi-bell-fill"></i>
+          <span>Bildirimler</span>
+        </a>
+        <a>
+          <i class="bi bi-bookmark-fill"></i>
+          <span>Yeri İşaretleri</span>
+        </a>
+        <a>
+          <i class="bi bi-envelope-fill"></i>
+          <span>Mesajlar</span>
+        </a>
+        <button>
+          <i class="bi bi-send-fill"></i>
+          <span>Gönder</span>
+        </button>
+      </nav>
+      <div class="user-info">
+        <img id="profile-pic" />
+
+        <div>
+          <p id="user-name"></p>
+          <p id="user-tag"></p>
+          <button id="logout-btn">
+            <i class="bi bi-door-open-fill"></i>
+            <span>Çıkış Yap</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <header>Anasayfa</header>
+      <!-- tweet atma -->
+      <form id="post-tweet">
+        <img id="profile-pic" />
+        <div class="input-area">
+          <input placeholder="Neler Oluyor?" type="text" />
+
+          <div class="buttons">
+            <button>Tweetle</button>
+          </div>
+        </div>
+      </form>
+      <!-- atılan tweetler -->
+      <div></div>
+    </main>
+
+    <aside class="news">haberler</aside>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

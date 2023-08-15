@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "auth";
+
+@mixin laptop {
+  @media (max-width: 1300px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
+.feed {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  font-family: "poppins";
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  @include tablet() {
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+.left-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  img {
+    width: 80px;
+    @include laptop() {
+      width: 50px;
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+
+    @include laptop() {
+      align-items: end;
+    }
+
+    a {
+      display: flex;
+      font-size: 19px;
+      gap: 10px;
+      padding: 20px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        background: rgb(50, 50, 50);
+      }
+    }
+
+    button {
+      background: $blue;
+      color: white;
+      margin-top: 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      &:hover {
+        background: rgb(0, 97, 161);
+      }
+      @include laptop() {
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+      }
+    }
+    i {
+      @include laptop() {
+        font-size: 26px;
+      }
+    }
+    span {
+      white-space: nowrap;
+      @include laptop() {
+        display: none;
+      }
+    }
+  }
+
+  .user-info {
+    display: flex;
+    gap: 10px;
+    @include laptop {
+      flex-direction: column;
+      align-items: end;
+    }
+    img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+    }
+    button {
+      background: gray;
+      border-radius: 6px;
+      color: white;
+
+      span {
+        @include laptop() {
+          display: none;
+        }
+      }
+    }
+    p {
+      @include laptop {
+        display: none;
+      }
+    }
+  }
+}
+
+main {
+  border: 1px solid rgb(60, 60, 60);
+
+  header {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    border-bottom: 1px solid rgb(60, 60, 60);
+  }
+
+  #post-tweet {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid rgb(60, 60, 60);
+    padding: 10px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .input-area {
+      width: 100%;
+
+      input {
+        width: 100%;
+        background: black;
+        color: white;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        font-size: 20px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: end;
+        button {
+          border-radius: 60px;
+          background: $blue;
+          color: white;
+          &:hover {
+            background: rgb(0, 92, 149);
+          }
+        }
+      }
+    }
+  }
+}
+
+.news {
+  @include tablet() {
+    display: none;
+  }
+}
