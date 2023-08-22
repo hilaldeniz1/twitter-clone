@@ -6,6 +6,8 @@ const options = {
   },
 };
 
+const baseURL = "https://twitter-api45.p.rapidapi.com";
+
 export class API {
   constructor() {}
 
@@ -24,4 +26,20 @@ export class API {
   }
 
   //diğer api istekler...
+  async fetchData(endpoint, paramName, paramValue) {
+    try {
+      // paramtre olarak gelen linke
+      // yeni paramtre oalrak gelen url parametresini ekleyip istek atma
+      const res = await fetch(
+        `${baseURL}${endpoint}?${paramName}=${paramValue}`,
+        options
+      );
+
+      const data = await res.json();
+
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }

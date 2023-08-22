@@ -64,7 +64,12 @@ button {
 }
 @media (max-width: 1000px) {
   .feed {
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
+  }
+}
+@media (min-width: 1000px) {
+  .feed {
+    grid-template-columns: 1fr 600px 1fr;
   }
 }
 
@@ -72,6 +77,12 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+@media (min-width: 1300px) {
+  .left-bar {
+    align-items: end;
+    margin-right: 50px;
+  }
 }
 .left-bar img {
   width: 80px;
@@ -168,7 +179,17 @@ button {
 }
 
 main {
+  overflow: auto;
+  height: 100vh;
   border: 1px solid rgb(60, 60, 60);
+}
+main::-webkit-scrollbar {
+  width: 10px;
+  background: black;
+}
+main::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 5px;
 }
 main header {
   padding: 20px;
@@ -210,6 +231,80 @@ main #post-tweet .input-area .buttons button {
 }
 main #post-tweet .input-area .buttons button:hover {
   background: rgb(0, 92, 149);
+}
+
+.tweets-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet {
+  display: flex;
+  padding: 10px;
+  gap: 15px;
+  border-bottom: 1px solid rgb(50, 50, 50);
+}
+.tweet:hover {
+  background: rgb(28, 28, 28);
+}
+.tweet #user-img {
+  height: 50px;
+  border-radius: 50%;
+}
+.tweet .body, .tweet .tweet-info {
+  width: 100%;
+  margin-top: 10px;
+}
+.tweet .body .user, .tweet .tweet-info .user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tweet .body .user .info, .tweet .tweet-info .user .info {
+  display: flex;
+  gap: 10px;
+}
+.tweet .body .user p, .tweet .tweet-info .user p {
+  color: gray;
+}
+.tweet .body .content, .tweet .tweet-info .content {
+  text-decoration: none;
+  color: white;
+}
+.tweet .body .content img, .tweet .tweet-info .content img {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.tweet .body .content video, .tweet .tweet-info .content video {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 500px;
+}
+.tweet .body .buttons, .tweet .tweet-info .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.tweet .body .buttons button, .tweet .tweet-info .buttons button {
+  background: none;
+  color: rgb(136, 136, 136);
+}
+.tweet .body .buttons button:hover, .tweet .tweet-info .buttons button:hover {
+  background: rgba(236, 236, 236, 0.247);
+  border-radius: 50px;
+}
+
+.info-area .top {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.tweet-info {
+  flex-direction: column;
 }
 
 @media (max-width: 1000px) {
