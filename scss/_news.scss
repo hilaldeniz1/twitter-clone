@@ -1,0 +1,36 @@
+.news {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: start;
+}
+
+.news form {
+  background: rgb(40, 40, 40);
+  padding: 5px 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 40px;
+  color: rgb(183, 181, 181);
+
+  input {
+    background: none;
+    border: none;
+    outline: none;
+    color: rgb(183, 181, 181);
+  }
+}
+
+.news ul {
+  background: rgb(40, 40, 40);
+  border-radius: 10px;
+  padding: 20px;
+  list-style: none;
+  min-width: 250px;
+  li {
+    padding: 10px;
+    border-bottom: 1px solid rgb(95, 94, 94);
+  }
+}

@@ -1,0 +1,74 @@
+.top {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  a {
+    color: white;
+  }
+}
+
+.loading-top {
+  margin: 20px;
+}
+
+.info-area {
+  padding: 20px;
+}
+
+.tweet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+
+    button {
+      border-radius: 10px;
+      &:hover {
+        background: rgb(157, 157, 157);
+      }
+    }
+  }
+
+  .data {
+    display: flex;
+    gap: 20px;
+
+    p {
+      color: rgb(173, 173, 173);
+
+      .count {
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background: none;
+      color: gray;
+      border-radius: 50px;
+      &:hover {
+        background: rgba(152, 152, 152, 0.331);
+      }
+    }
+  }
+}

@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "auth";
+@import "info";
+@import "news";
+@import "user";
 
 @mixin laptop {
   @media (max-width: 1300px) {
@@ -45,6 +48,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  a {
+    color: white;
+  }
   @include min-laptop() {
     align-items: end;
     margin-right: 50px;
@@ -232,6 +239,8 @@ main {
       .info {
         display: flex;
         gap: 10px;
+        text-decoration: none;
+        color: white;
       }
       p {
         color: gray;
@@ -267,19 +276,6 @@ main {
       }
     }
   }
-}
-
-.info-area {
-  .top {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-  }
-}
-
-.tweet-info {
-  @extend .body;
-  flex-direction: column;
 }
 
 .news {

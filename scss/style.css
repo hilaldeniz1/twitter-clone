@@ -53,6 +53,165 @@ button {
   border-radius: 5px;
 }
 
+.top {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.top a {
+  color: white;
+}
+
+.loading-top {
+  margin: 20px;
+}
+
+.info-area {
+  padding: 20px;
+}
+
+.tweet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+.tweet-info .user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tweet-info .user .info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tweet-info .user .info img {
+  width: 50px;
+  border-radius: 50%;
+}
+.tweet-info .user button {
+  border-radius: 10px;
+}
+.tweet-info .user button:hover {
+  background: rgb(157, 157, 157);
+}
+.tweet-info .data {
+  display: flex;
+  gap: 20px;
+}
+.tweet-info .data p {
+  color: rgb(173, 173, 173);
+}
+.tweet-info .data p .count {
+  color: white;
+  font-weight: bold;
+}
+.tweet-info .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.tweet-info .buttons button {
+  background: none;
+  color: gray;
+  border-radius: 50px;
+}
+.tweet-info .buttons button:hover {
+  background: rgba(152, 152, 152, 0.331);
+}
+
+.news {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: start;
+}
+
+.news form {
+  background: rgb(40, 40, 40);
+  padding: 5px 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 40px;
+  color: rgb(183, 181, 181);
+}
+.news form input {
+  background: none;
+  border: none;
+  outline: none;
+  color: rgb(183, 181, 181);
+}
+
+.news ul {
+  background: rgb(40, 40, 40);
+  border-radius: 10px;
+  padding: 20px;
+  list-style: none;
+  min-width: 250px;
+}
+.news ul li {
+  padding: 10px;
+  border-bottom: 1px solid rgb(95, 94, 94);
+}
+
+.user-page .top {
+  padding: 20px;
+}
+.user-page .user-page-info {
+  padding: 20px;
+  border-bottom: 1px solid rgb(70, 70, 70);
+}
+.user-page .user-page-info div {
+  display: flex;
+  gap: 40px;
+}
+.user-page .user-page-info div p {
+  color: rgb(171, 171, 171);
+}
+.user-page .user-page-info div p span:nth-child(1) {
+  color: white;
+  font-weight: bold;
+}
+
+.banner {
+  position: relative;
+}
+.banner img {
+  width: 100%;
+  height: 200px;
+}
+.banner .user-pp {
+  position: absolute;
+  bottom: -65px;
+  left: 30px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+.user-page .buttons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 40px;
+  margin-right: 40px;
+  gap: 30px;
+}
+.user-page .buttons .icon {
+  border: 1px solid;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+.user-page .buttons button {
+  border-radius: 40px;
+}
+
 .feed {
   background: black;
   color: white;
@@ -77,6 +236,9 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.left-bar a {
+  color: white;
 }
 @media (min-width: 1300px) {
   .left-bar {
@@ -251,60 +413,52 @@ main #post-tweet .input-area .buttons button:hover {
   height: 50px;
   border-radius: 50%;
 }
-.tweet .body, .tweet .tweet-info {
+.tweet .body {
   width: 100%;
   margin-top: 10px;
 }
-.tweet .body .user, .tweet .tweet-info .user {
+.tweet .body .user {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.tweet .body .user .info, .tweet .tweet-info .user .info {
+.tweet .body .user .info {
   display: flex;
   gap: 10px;
-}
-.tweet .body .user p, .tweet .tweet-info .user p {
-  color: gray;
-}
-.tweet .body .content, .tweet .tweet-info .content {
   text-decoration: none;
   color: white;
 }
-.tweet .body .content img, .tweet .tweet-info .content img {
+.tweet .body .user p {
+  color: gray;
+}
+.tweet .body .content {
+  text-decoration: none;
+  color: white;
+}
+.tweet .body .content img {
   width: 100%;
   border-radius: 10px;
   max-height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.tweet .body .content video, .tweet .tweet-info .content video {
+.tweet .body .content video {
   width: 100%;
   border-radius: 10px;
   max-height: 500px;
 }
-.tweet .body .buttons, .tweet .tweet-info .buttons {
+.tweet .body .buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
-.tweet .body .buttons button, .tweet .tweet-info .buttons button {
+.tweet .body .buttons button {
   background: none;
   color: rgb(136, 136, 136);
 }
-.tweet .body .buttons button:hover, .tweet .tweet-info .buttons button:hover {
+.tweet .body .buttons button:hover {
   background: rgba(236, 236, 236, 0.247);
   border-radius: 50px;
-}
-
-.info-area .top {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-.tweet-info {
-  flex-direction: column;
 }
 
 @media (max-width: 1000px) {

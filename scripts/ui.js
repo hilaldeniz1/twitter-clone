@@ -13,6 +13,7 @@ export const mainEle = {
   logoutBtn: document.querySelector("#logout-btn"),
   tweetsArea: document.querySelector(".tweets-area"),
   main: document.querySelector("main"),
+  searchForm: document.querySelector(".news form"),
 };
 
 // kullanıcı bilgilerini ekrana basar
@@ -33,9 +34,19 @@ const getMedia = (media) => {
   }
 
   if (media.video) {
+    // diziden sadece mpre4'leri al
+    const filter = media.video[0].variants.filter(
+      (item) => item.content_type === "video/mp4"
+    );
+
+    // diziyi bitrate değerine göre yüksten aza sıralar
+    const sorted = filter.sort((a, b) => b.bitrate - a.bitrate);
+
+    console.log(sorted);
+
     return `
     <video controls>
-    <source src="${media.video[0].variants[1].url}" />
+     <source src="${sorted[0].url}" />
     </video>`;
   }
 
@@ -43,44 +54,50 @@ const getMedia = (media) => {
 };
 
 // kullanıcının tweet'lerini ekrana basma
-export const renderTimeline = (user, tweets) => {
+export const renderTimeline = (user, tweets, outlet) => {
+  console.log(user, tweets, outlet);
   let timelineHTML = tweets
     .map(
-      (tweet) => `
+      (tweet, i) => `
        <div class="tweet">
           <img
             id="user-img"
-            src="${user.avatar}"
+            src="${user ? user.avatar : `https://picsum.photos/20${i}`}"
           />
           <div class="body">
             <div class="user">
-              <div class="info">
-                <h6>${user.name}</h6>
-                <p>@${user.profile}</p>
+              <a href="?user#${
+                user ? user.profile : tweet.screen_name
+              }" class="info">
+
+                <h6>${user ? user.name : tweet.screen_name}</h6>
+                <p>@${user ? user.profile : tweet.screen_name}</p>
                 <p>${moment(tweet.created_at).fromNow()}</p>
-              </div>
+              </a>
               <i class="bi bi-three-dots"></i>
             </div>
-            <a href="#${tweet.tweet_id}" class="content">
+            <a href="?status/${user ? user.profile : tweet.screen_name}#${
+        tweet.tweet_id
+      }" class="content">
               <p>${tweet.text}</p>
                ${getMedia(tweet.media)}
             </a>
             <div class="buttons">
               <button>
                 <i class="bi bi-chat"></i>
-                <span>91</span>
+                <span>${tweet.replies}</span>
               </button>
               <button>
                 <i class="bi bi-recycle"></i>
-                <span>11</span>
+                <span>${tweet.retweets + tweet.quotes}</span>
               </button>
               <button>
                 <i class="bi bi-heart"></i>
-                <span>499</span>
+                <span>${tweet.favorites}</span>
               </button>
               <button>
                 <i class="bi bi-bookmark"></i>
-                <span>11</span>
+                <span>${tweet.bookmarks}</span>
               </button>
             </div>
           </div>
@@ -90,7 +107,7 @@ export const renderTimeline = (user, tweets) => {
     .join("");
 
   // oluştuduğumuz tweetleri html'e gönderme
-  mainEle.tweetsArea.innerHTML = timelineHTML;
+  outlet.innerHTML = timelineHTML;
 };
 
 // parametre olarak gelen alana loading basar
@@ -107,8 +124,10 @@ export const renderLoader = (outlet) => {
 // apiden cevap gelene kadar gözükecek yer
 export const renderEmptyInfo = () => {
   mainEle.main.innerHTML = `
-   <div class="top">
-     <a href="/">Geri</a>
+   <div class="top loading-top">
+    
+      <i class="bi bi-arrow-left"></i>
+   
      <h3>Gönderi</h3>
     </div>
 
@@ -121,25 +140,49 @@ export const renderEmptyInfo = () => {
 };
 
 // tweet'ddetayını ekran basar
-export const renderInfo = (info) => {
-  console.log(info);
-
+export const renderInfo = (info, userName) => {
   const html = `
   <div class="info-area">
     <div class="top">
-     <a href="/">Geri</a>
+  
+     <i class="bi bi-arrow-left"></i>
+   
      <h3>Gönderi</h3>
     </div>
+
     <div class="tweet-info">
+
       <div class="user">
               <div class="info">
-                <h6>Elon Musk</h6>
-                <p>@elonmusk</p>
+                <img src="/images/default.png" />
+                <h6>${userName}</h6>
+                <p>@${userName}</p>
               </div>
               <button>Abone Ol</button>
        </div>
+
        <div class="content">
        <p>${info.text}</p>
+       </div>
+
+       <div class="data">
+         <p>
+            <span class="count">${info.retweets}</span>
+            <span>Yeniden Gönderi</span>
+         </p>
+         <p>
+            <span class="count">${info.quotes}</span>
+            <span>Alıntılar</span>
+         </p>
+         <p>
+            <span class="count">${info.likes}</span>
+            <span>Beğeni</span>
+         </p>
+         <p>
+            <span class="count">${info.bookmarks}</span>
+            <span>Yer İşareti</span>
+         </p>
+       
        </div>
 
        <div class="buttons">
@@ -162,4 +205,59 @@ export const renderInfo = (info) => {
   `;
 
   mainEle.main.innerHTML = html;
+};
+
+// kullanıcı hakkında bilgileri ekrana basar
+export const renderUserPage = (user) => {
+  mainEle.main.innerHTML = `
+  <div class="user-page">
+    <div class="top">
+  
+        <i class="bi bi-arrow-left"></i>
+   
+    <h3>${user.name}</h3>
+   </div>
+
+   <div class="banner">
+     <img src="https://picsum.photos/900/200"/> 
+     <img class="user-pp" src="${user.avatar}">
+   </div>
+
+   <div class="buttons">
+     <div class="icon">
+      <i class="bi bi-three-dots"></i>
+     </div>
+    <div class="icon">
+      <i class="bi bi-envelope"></i>
+     </div>
+    <button>Takip Et</button>
+   </div>
+
+   <div class="user-page-info">
+    <h4>${user.name}</h4>
+    <p>@${user.profile}</p>
+
+    <p>${user.desc}</p>
+
+    <div>
+     <p>
+      <span> ${user.friends} </span>
+      <span>Takip Edilen</span>
+     </p>
+     <p>
+      <span> ${user.sub_count} </span>
+      <span>Takipçi</span>
+     </p>
+    
+    </div>
+   </div>
+
+   
+   <div class="user-tweets">
+   
+   </div>
+   
+
+  </div>
+  `;
 };
