@@ -8,6 +8,10 @@
 
 - Tweet detail page made.
 
+### 'Deploy'
+
+https://courageous-pie-e60bfd.netlify.app
+
 ### 'Screen'
 
 ![](twitter.gif)
